@@ -1,5 +1,31 @@
 import math
 chars = '0123456789aąbcćdeęfghijklłmnńoópqrstuvwxyzAĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
+MORSE_CODE_DICT = { 'A':'.-', 'Ą':'.-.-', 'B':'-...', 
+                    'C':'-.-.', 'Ć':'-.-..', 'D':'-..', 'E':'.', 
+                    'Ę':'..-..','F':'..-.', 'G':'--.', 'H':'....', 
+                    'I':'..', 'J':'.---', 'K':'-.-', 
+                    'L':'.-..', 'Ł':'.-..-', 'M':'--', 'N':'-.', 'Ń':'--.--',
+                    'O':'---', 'Ó':'---.', 'P':'.--.', 'Q':'--.-', 
+                    'R':'.-.', 'S':'...', 'Ś':'...-...', 'T':'-', 
+                    'U':'..-', 'V':'...-', 'W':'.--', 
+                    'X':'-..-', 'Y':'-.--', 'Z':'--..', 'Ż':'--.-.', 'Ź':'--..-', 
+                    '1':'.----', '2':'..---', '3':'...--', 
+                    '4':'....-', '5':'.....', '6':'-....', 
+                    '7':'--...', '8':'---..', '9':'----.', 
+                    '0':'-----', ',':'--..--', '.':'.-.-.-', 
+                    '?':'..--..', '/':'-..-.', '-':'-....-', 
+                    '(':'-.--.', ')':'-.--.-', ';':'-.-.-.', ':':'---...',
+                    '"':'.-..-.', '!':'-.-.--'} 
+
+def encrypt(message): 
+    cipher = '' 
+    for letter in message:
+        if letter == '\n': continue 
+        if letter != ' ':
+            cipher += MORSE_CODE_DICT[letter] + ' '
+        else: 
+            cipher += ' '
+    return cipher 
 
 def shanonEntrophy(data):
     if not data:
@@ -13,7 +39,7 @@ def shanonEntrophy(data):
 
 def getTextFromFile(inputFile):
     with open(inputFile, "r") as f:
-        return f.read()
+        return f.read().upper()
 
 def letterChance(text, char):
   count = 0
@@ -28,4 +54,9 @@ text = getTextFromFile('panTadeusz.txt')
 for i, char in enumerate(chars):
     print(char + " - " + str(letterChance(text, char)))
 
-print('Entropia Shanona' + shanonEntrophy(text))
+print('Entropia Shanona - ' , shanonEntrophy(text))
+
+morse = encrypt(text)
+#print(morse)
+
+print('Entropia Shanona - morse ' , shanonEntrophy(morse))
