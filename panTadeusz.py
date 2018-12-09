@@ -1,5 +1,7 @@
 import math
-chars = '0123456789aąbcćdeęfghijklłmnńoópqrstuvwxyzAĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
+#chars = '0123456789aąbcćdeęfghijklłmnńoópqrstuvwxyzAĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
+chars = '0123456789AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
+
 MORSE_CODE_DICT = { 'A':'.-', 'Ą':'.-.-', 'B':'-...', 
                     'C':'-.-.', 'Ć':'-.-..', 'D':'-..', 'E':'.', 
                     'Ę':'..-..','F':'..-.', 'G':'--.', 'H':'....', 
@@ -22,9 +24,9 @@ def encrypt(message):
     for letter in message:
         if letter == '\n': continue 
         if letter != ' ':
-            cipher += MORSE_CODE_DICT[letter] + ' '
+            cipher += MORSE_CODE_DICT[letter]
         else: 
-            cipher += ' '
+           cipher += 'x'
     return cipher 
 
 def shanonEntrophy(data):
@@ -58,5 +60,13 @@ print('Entropia Shanona - ' , shanonEntrophy(text))
 
 morse = encrypt(text)
 #print(morse)
+
+# file = open('morsTadeusz.txt', 'w') 
+# file.write(morse) 
+# file.close() 
+
+print(". " + str(letterChance(morse, '.')))
+print("- " + str(letterChance(morse, '-')))
+print("Koniec znaku " + str(letterChance(morse, 'x')))
 
 print('Entropia Shanona - morse ' , shanonEntrophy(morse))
