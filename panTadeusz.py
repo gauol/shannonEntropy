@@ -48,13 +48,13 @@ def letterChance(text, char):
   for c in text:
     if char == c:
       count += 1 
-  return (count * 100 )/ len(text)
+  return (text.count(char)* 100 )/ len(text)
 
 text = getTextFromFile('panTadeusz.txt')
 
 #chars = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 for i, char in enumerate(chars):
-    print(char + " - " + str(letterChance(text, char)))
+    print(char + " - " + str(letterChance(text, char)) + " %")
 
 print('Entropia Shanona - ' , shanonEntrophy(text))
 
@@ -65,8 +65,8 @@ morse = encrypt(text)
 # file.write(morse) 
 # file.close() 
 
-print(". " + str(letterChance(morse, '.')))
-print("- " + str(letterChance(morse, '-')))
-print("Koniec znaku " + str(letterChance(morse, 'x')))
+print(". " + str(letterChance(morse, '.')) + " %")
+print("- " + str(letterChance(morse, '-')) + " %")
+print("Koniec znaku " + str(letterChance(morse, 'x')) + " %")
 
 print('Entropia Shanona - morse ' , shanonEntrophy(morse))
