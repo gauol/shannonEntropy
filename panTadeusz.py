@@ -1,4 +1,8 @@
 import math
+
+filename = 'panTadeusz.txt'
+
+#chars = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 #chars = '0123456789aąbcćdeęfghijklłmnńoópqrstuvwxyzAĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
 chars = '0123456789AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
 
@@ -50,9 +54,8 @@ def letterChance(text, char):
       count += 1 
   return (text.count(char)* 100 )/ len(text)
 
-text = getTextFromFile('panTadeusz.txt')
+text = getTextFromFile(filename)
 
-#chars = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 for i, char in enumerate(chars):
     print(char + " - " + str(letterChance(text, char)) + " %")
 
